@@ -2,13 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const BodyMetrics = ({ navigation }) => {
+const DietKind = ({ navigation }) => {
   const handleLogoutPress = () => {
     navigation.navigate('Login');
-  };
-
-  const handleMetricsPress = () => {
-    navigation.navigate('BodyData');
   };
 
   return (
@@ -22,9 +18,15 @@ const BodyMetrics = ({ navigation }) => {
         <Text>User Name</Text>
       </View>
       <View style={styles.centerContent}>
-        <Text style={styles.subtitle}>Body Metrics</Text>
-        <TouchableOpacity style={styles.buttonContainer} onPress={handleMetricsPress}>
-          <Text style={styles.buttonText}>Metrics</Text>
+        <Text style={styles.title}>Choose Your Diet Kind</Text>
+        <TouchableOpacity style={styles.button} onPress={() => console.log('Omnívoro')}>
+          <Text style={styles.buttonText}>Omnívoro</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => console.log('Vegetariano')}>
+          <Text style={styles.buttonText}>Vegetariano</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => console.log('Vegano')}>
+          <Text style={styles.buttonText}>Vegano</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -46,21 +48,21 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   centerContent: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 80,
   },
-  subtitle: {
+  title: {
     fontSize: 24,
-    marginBottom: 10,
+    fontWeight: 'bold',
+    marginBottom: 20,
   },
-  buttonContainer: {
+  button: {
     backgroundColor: 'blue',
     paddingVertical: 15,
     paddingHorizontal: 40,
     borderRadius: 10,
-    alignItems: 'center',
-    marginTop: 10,
+    marginBottom: 10,
   },
   buttonText: {
     color: 'white',
@@ -68,4 +70,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BodyMetrics;
+export default DietKind;
