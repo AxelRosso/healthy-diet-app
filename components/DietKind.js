@@ -7,6 +7,16 @@ const DietKind = ({ navigation }) => {
     navigation.navigate('Login');
   };
 
+  const handleDietKindPress = (dietType) => {
+    if (dietType === 'Omnívoro') {
+      navigation.navigate('FoodCategory1');
+    } else if (dietType === 'Vegetariano') {
+      navigation.navigate('FoodCategory2');
+    } else if (dietType === 'Vegano') {
+      navigation.navigate('FoodCategory3');
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.topBar}>
@@ -14,18 +24,18 @@ const DietKind = ({ navigation }) => {
         <MaterialCommunityIcons name="logout" size={24} color="black" onPress={handleLogoutPress} />
       </View>
       <View style={styles.profileContainer}>
-        <MaterialCommunityIcons name="account-circle" size={200} color="black" />
+        <MaterialCommunityIcons name="account-circle" size={150} color="black" />
         <Text>User Name</Text>
       </View>
       <View style={styles.centerContent}>
         <Text style={styles.title}>Choose Your Diet Kind</Text>
-        <TouchableOpacity style={styles.button} onPress={() => console.log('Omnívoro')}>
+        <TouchableOpacity style={styles.button} onPress={() => handleDietKindPress('Omnívoro')}>
           <Text style={styles.buttonText}>Omnívoro</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => console.log('Vegetariano')}>
+        <TouchableOpacity style={styles.button} onPress={() => handleDietKindPress('Vegetariano')}>
           <Text style={styles.buttonText}>Vegetariano</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => console.log('Vegano')}>
+        <TouchableOpacity style={styles.button} onPress={() => handleDietKindPress('Vegano')}>
           <Text style={styles.buttonText}>Vegano</Text>
         </TouchableOpacity>
       </View>
@@ -45,7 +55,7 @@ const styles = StyleSheet.create({
   },
   profileContainer: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 0,
   },
   centerContent: {
     flex: 1,
@@ -54,7 +64,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
     marginBottom: 20,
   },
   button: {

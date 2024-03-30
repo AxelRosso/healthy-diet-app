@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Login = ({ navigation }) => {
@@ -14,17 +14,26 @@ const Login = ({ navigation }) => {
         <MaterialCommunityIcons name="login" size={24} color="black" />
       </View>
       <View style={styles.profileContainer}>
-        <MaterialCommunityIcons name="account-circle" size={200} color="grey" />
+        <MaterialCommunityIcons name="account-circle" size={150} color="grey" />
       </View>
       <View style={styles.centerContent}>
         <View style={styles.inputContainer}>
-          <Text>User</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="User"
+            placeholderTextColor="grey"
+          />
         </View>
         <View style={styles.inputContainer}>
-          <Text>Password</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            placeholderTextColor="grey"
+            secureTextEntry={true}
+          />
         </View>
         <View style={styles.buttonContainer}>
-          <Button title="Log in" onPress={handleMetricsPress} /> {/* Cambiado de 'Metrics' a 'Log in' */}
+          <Button title="Log in" onPress={handleMetricsPress} color="#007AFF" />
         </View>
       </View>
     </View>
@@ -43,7 +52,7 @@ const styles = StyleSheet.create({
   },
   profileContainer: {
     alignItems: 'center',
-    marginTop: 100, // Ajusta la altura del icono de perfil
+    marginTop: 0,
   },
   centerContent: {
     flex: 1,
@@ -51,12 +60,17 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 20,
-    padding: 10,
-    borderWidth: 1,
     borderRadius: 10,
+    backgroundColor: 'white',
+    elevation: 3,
+  },
+  input: {
+    padding: 10,
+    fontSize: 16,
+    color: 'black',
   },
   buttonContainer: {
-    marginBottom: 20, // Ajusta la distancia del botón al siguiente elemento
+    marginBottom: 20,
     alignItems: 'center',
   },
 });

@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const BodyData = ({ navigation }) => {
+  const [selectedGender, setSelectedGender] = useState(null);
+
   const handleLogoutPress = () => {
     navigation.navigate('Login');
   };
 
   const handleNextPress = () => {
-    navigation.navigate('DietKind');
+    navigation.navigate('DietGoal');
+  };
+
+  const handleGenderSelect = (gender) => {
+    setSelectedGender(gender);
   };
 
   return (
@@ -18,26 +24,38 @@ const BodyData = ({ navigation }) => {
         <MaterialCommunityIcons name="logout" size={24} color="black" onPress={handleLogoutPress} />
       </View>
       <View style={styles.profileContainer}>
-        <MaterialCommunityIcons name="account-circle" size={200} color="black" />
+        <MaterialCommunityIcons name="account-circle" size={150} color="black" />
         <Text>User Name</Text>
       </View>
       <View style={styles.centerContent}>
         <Text style={styles.subtitle}>Enter your body metrics</Text>
-        <TextInput style={styles.input} placeholder="Weight" />
-        <TextInput style={styles.input} placeholder="Height" />
-        <TextInput style={styles.input} placeholder="Age" />
+        <View style={styles.inputContainer}>
+          <TextInput style={styles.input} placeholder="Weight" />
+        </View>
+        <View style={styles.inputContainer}>
+          <TextInput style={styles.input} placeholder="Height" />
+        </View>
+        <View style={styles.inputContainer}>
+          <TextInput style={styles.input} placeholder="Age" />
+        </View>
         <View style={styles.genderContainer}>
           <Text style={styles.genderText}>Gender:</Text>
-          <TouchableOpacity style={styles.genderButton}>
-            <Text style={styles.genderButtonText}>Male</Text>
+          <TouchableOpacity
+            style={[styles.genderButton, selectedGender === 'Male' && styles.selectedGender]}
+            onPress={() => handleGenderSelect('Male')}
+          >
+            <Text style={[styles.genderButtonText, selectedGender === 'Male' && styles.selectedGenderText]}>Male</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.genderButton}>
-            <Text style={styles.genderButtonText}>Female</Text>
+          <TouchableOpacity
+            style={[styles.genderButton, selectedGender === 'Female' && styles.selectedGender]}
+            onPress={() => handleGenderSelect('Female')}
+          >
+            <Text style={[styles.genderButtonText, selectedGender === 'Female' && styles.selectedGenderText]}>Female</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.arrowButton, { marginLeft: 10 }]}>
+            <MaterialCommunityIcons name="arrow-right" size={20} color="white" onPress={handleNextPress} />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.button} onPress={handleNextPress}>
-          <Text style={styles.buttonText}>Next</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -55,7 +73,7 @@ const styles = StyleSheet.create({
   },
   profileContainer: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 0,
   },
   centerContent: {
     justifyContent: 'center',
@@ -66,14 +84,17 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 20,
   },
-  input: {
+  inputContainer: {
     width: '100%',
-    height: 40,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginBottom: 10,
+    marginBottom: 20,
+    borderRadius: 10,
+    backgroundColor: 'white',
+    elevation: 3,
+  },
+  input: {
+    padding: 10,
+    fontSize: 16,
+    color: 'black',
   },
   genderContainer: {
     flexDirection: 'row',
@@ -84,26 +105,26 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   genderButton: {
-    backgroundColor: 'blue',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    backgroundColor: '#15ECFE',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
     borderRadius: 5,
     marginRight: 10,
+  },
+  selectedGender: {
+    backgroundColor: 'green',
   },
   genderButtonText: {
     color: 'white',
   },
-  button: {
-    backgroundColor: 'blue',
-    paddingVertical: 15,
-    paddingHorizontal: 40,
-    borderRadius: 10,
-    alignItems: 'center',
-    marginTop: 20,
+  selectedGenderText: {
+    color: 'black',
   },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
+  arrowButton: {
+    backgroundColor: 'blue',
+    padding: 10,
+    borderRadius: 5,
+    marginleft: 30,
   },
 });
 

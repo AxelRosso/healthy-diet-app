@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "HealthyDietFood",
-    "slug": "HealthyDietFood",
+    "name": "HealthyDietApp",
+    "slug": "HealthyDietApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.axelrosso.HealthyDietFood"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7fc50a86-79fd-48a7-af37-cf0bd71d4fbf"
+      }
     }
   }
 }

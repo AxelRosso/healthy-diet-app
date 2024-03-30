@@ -18,13 +18,13 @@ const BodyMetrics = ({ navigation }) => {
         <MaterialCommunityIcons name="logout" size={24} color="black" onPress={handleLogoutPress} />
       </View>
       <View style={styles.profileContainer}>
-        <MaterialCommunityIcons name="account-circle" size={200} color="black" />
+        <MaterialCommunityIcons name="account-circle" size={150} color="black" />
         <Text>User Name</Text>
       </View>
       <View style={styles.centerContent}>
         <Text style={styles.subtitle}>Body Metrics</Text>
-        <TouchableOpacity style={styles.buttonContainer} onPress={handleMetricsPress}>
-          <Text style={styles.buttonText}>Metrics</Text>
+        <TouchableOpacity style={[styles.buttonContainer, { paddingVertical: 8, paddingHorizontal: 16 }]} onPress={handleMetricsPress}>
+          <Text style={[styles.buttonText, { fontSize: 16 }]}>Metrics</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -43,12 +43,12 @@ const styles = StyleSheet.create({
   },
   profileContainer: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 0,
   },
   centerContent: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 80,
+    marginTop: 40,
   },
   subtitle: {
     fontSize: 24,
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: 'blue',
-    paddingVertical: 15,
-    paddingHorizontal: 40,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
     borderRadius: 10,
     alignItems: 'center',
     marginTop: 10,
